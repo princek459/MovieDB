@@ -7,6 +7,8 @@ import './App.css';
 
 const App = () => {
 
+
+
   const[movies, setMovies] = useState([]);
   const[search, setSearch] = useState("");
 
@@ -33,7 +35,6 @@ const App = () => {
 
   const updateSearch = e => {
     setSearch(e.target.value);
-    console.log(search);
   };
 
   //stopping the constant updating
@@ -47,22 +48,28 @@ const App = () => {
 
   return(
     <div className="App">
+      
       <h1>Movie Database</h1>
      <form onSubmit={getSearch} className="search-form">
-       <input className="search-bar" type="text" value={search} onChange={updateSearch} />
+       <input className="search" type="text" value={search} onChange={updateSearch} />
        <button className="search-button" type="submit">
          Search
          </button>
      </form>
 
-    {movies.map(movies => (
+     <div className="movie-container">
+    {movies.length > 0 && movies.map(movies => (
       <Movie 
-      // title={setMovies.title} 
-      // overview={setMovies.overview} 
-      // image={setMovies.poster_path}
+      key={movies.id}
+      title={movies.title}
+      overview={movies.overview} 
+      poster_path={movies.poster_path}
+      
       />
     ))}
-  
+    </div>
+
+
     </div>
   )
 }

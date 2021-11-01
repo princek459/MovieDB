@@ -2,6 +2,18 @@
   text-align: center;
 }
 
+body{
+  font-family: 'Poppins', sans-serif;
+  margin:0; 
+  padding:0;
+  box-sizing: border-box;
+  text-transform: capitalize;
+  transition: all .2s linear;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+}
+
 :root{
   --color:#323233;
 }
@@ -25,6 +37,54 @@ html{
 .search-button:hover{
   letter-spacing: .1rem;
   opacity: .8;
+}
+
+.movie{
+  background-color: var(--color);
+  margin: 1rem;
+  width: 300px;
+  border-radius: 3px;
+  box-shadow: 3px 3px 5px var(--color);
+  position: relative;
+  overflow: hidden;
+}
+
+.movie img{
+  max-width: 100%;
+}
+
+.movie-container{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.movie-info h3{
+  margin: 0;
+}
+
+.movie-info {
+  margin: 0;
+  padding: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.movie-over {
+  position: absolute;
+  background-color: white;
+  color: #6C5CE7;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: auto;
+  max-height: 100%;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.movie:hover .movie-over{
+  transform: translateY(0%);
 }
 
 .App-logo {
