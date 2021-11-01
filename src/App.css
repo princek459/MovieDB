@@ -2,6 +2,31 @@
   text-align: center;
 }
 
+:root{
+  --color:#323233;
+}
+
+html{
+  font-size: 62.5%;
+}
+
+.search-button{
+  outline: none;
+  border: none;
+  border-radius: 5rem;
+  background: var(--color);
+  --color:#6C5CE7;
+  cursor: pointer;
+  height:2.5rem;
+  font-size: 1.7rem;
+  box-shadow: 0 .2rem .5rem rgba(0,0,0,.3);
+}
+
+.search-button:hover{
+  letter-spacing: .1rem;
+  opacity: .8;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

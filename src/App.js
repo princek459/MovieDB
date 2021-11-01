@@ -1,5 +1,5 @@
 
-import Movie from './Movie'
+import Movie from './Movie';
 import { useEffect, useState } from 'react';
 import './App.css';
 
@@ -22,8 +22,10 @@ const App = () => {
 
   // Fetching the API and assigning to getMovies
   const getMovies = async () => {
-    const response = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=f2360989338abcdd53ef13d0fa0b762a&language=en-US&page=1');
+    const response = await fetch(
+      'https://api.themoviedb.org/3/movie/top_rated?api_key=f2360989338abcdd53ef13d0fa0b762a&language=en-US&page');
     const data = await response.json();
+    setMovies(data.results);
     console.log(data.results);
   };
 
@@ -55,12 +57,12 @@ const App = () => {
 
     {movies.map(movies => (
       <Movie 
-      title={setMovies.title} 
-      tagline={setMovies.tagline} 
-      image={setMovies.data}
+      // title={setMovies.title} 
+      // overview={setMovies.overview} 
+      // image={setMovies.poster_path}
       />
     ))}
-
+  
     </div>
   )
 }
