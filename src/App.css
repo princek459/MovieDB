@@ -12,14 +12,23 @@ body{
   text-decoration: none;
   display: flex;
   flex-direction: column;
+  background-color: var(--color);
 }
 
 :root{
-  --color:#323233;
+  --color:#6C5CE7;
+  --box_color:#3823d4b0;
+  display: flex;
+  flex-direction: column;
 }
 
 html{
   font-size: 62.5%;
+}
+
+header{
+  background-color: var(--box_color);
+  padding: 1rem;
 }
 
 .search-button{
@@ -29,9 +38,6 @@ html{
   background: var(--color);
   --color:#6C5CE7;
   cursor: pointer;
-  height:2.5rem;
-  font-size: 1.7rem;
-  box-shadow: 0 .2rem .5rem rgba(0,0,0,.3);
 }
 
 .search-button:hover{
@@ -39,12 +45,25 @@ html{
   opacity: .8;
 }
 
+.search-form{
+  min-height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-bar{
+  width: 50%;
+  border: none;
+  padding: 10px;
+}
+
 .movie{
-  background-color: var(--color);
+  background-color: var(--box_color);
   margin: 1rem;
   width: 300px;
   border-radius: 3px;
-  box-shadow: 3px 3px 5px var(--color);
+  box-shadow: 3px 3px 5px var(--box_color);
   position: relative;
   overflow: hidden;
 }
@@ -55,6 +74,7 @@ html{
 
 .movie-container{
   display: flex;
+  justify-content: space-around;
   flex-wrap: wrap;
   width: 100%;
 }
@@ -73,7 +93,7 @@ html{
 .movie-over {
   position: absolute;
   background-color: white;
-  color: #6C5CE7;
+  color: var(--box_color);
   bottom: 0;
   left: 0;
   right: 0;

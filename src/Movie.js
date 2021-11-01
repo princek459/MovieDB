@@ -1,12 +1,12 @@
 import React from 'react'; 
 
-const image_API = "https://api.themoviedb.org/3/movie/{movie_id}/images?api_key=f2360989338abcdd53ef13d0fa0b762a";
+const image_API = "https://image.tmdb.org/t/p/w1280";
 
-const Movie = ({title,overview, poster_path}) => {
+const Movie = ({title,overview, poster_path, vote_average}) => {
     return(
         <div className="movie">
             
-            <img src={image_API + poster_path} alt="" />
+            <img src={image_API + poster_path} alt={title} />
 
            <div className="movie-info">
             <h3>{title}</h3> 
@@ -16,6 +16,7 @@ const Movie = ({title,overview, poster_path}) => {
             <div className="movie-over">
             <h2>Overview:</h2>
             <p>{overview}</p>
+            <span>{vote_average}</span>
             </div>
         </div>
     );
