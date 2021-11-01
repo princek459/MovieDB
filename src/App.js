@@ -14,20 +14,20 @@ const App = () => {
    * 
    */
 
-  const SEARCH_API = "https://api.themoviedb.org/3/search/movie?api_key=f2360989338abcdd53ef13d0fa0b762a&language=en-US&page=1&include_adult=false";
+  const SEARCH_API = "https://api.themoviedb.org/3/search/movie?api_key=f2360989338abcdd53ef13d0fa0b762a&query=";
 
   const[movies, setMovies] = useState([]);
-  const[search, setSearch] = useState("");
+  // const[search, setSearch] = useState("");
   const[searchTerm, setSearchTerm] = useState('');
 
   // only updates after submit is clicked
-  const[query, setQuery] = useState('Film');
+  // const[query, setQuery] = useState('Film');
 
 
   useEffect(() => {
     getMovies();
     console.log('We are fetching');
-  }, [query]);
+  }, []);
 
 
   // Fetching the API and assigning to getMovies
@@ -41,26 +41,30 @@ const App = () => {
 
 
 
-  const updateSearch = e => {
-    setSearch(e.target.value);
-  };
+  // const updateSearch = e => {
+  //   setSearch(e.target.value);
+  // };
 
-  //stopping the constant updating
-  const getSearch = e => {
-    e.preventDefault();
-    setQuery(search);
-  }
+  // //stopping the constant updating
+  // const getSearch = e => {
+  //   e.preventDefault();
+  //   setQuery(search);
+  // }
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
     
-    fetch(SEARCH_API + searchTerm)
-      .then((response) => response.json())
-      .then((data) => {
-        setMovies(data.results);
-      })
+    if(searchTerm) {
+      getMovies(SEARCH_API + searchTerm);
+        fetch(SEARCH_API + searchTerm)
+          .then((response) => response.json())
+          .then((data) => {
+            setMovies(data.results);
+        })
 
-  };
+        setSearchTerm('');
+        }
+      };
 
   const handleOnChange = (e) => {
     setSearchTerm(e.target.value);
@@ -70,6 +74,7 @@ const App = () => {
   return(
     <div className="App">
       <header>
+        <h1>Movie Database</h1>
         <form onSubmit={handleOnSubmit}>
           <input 
             type="text" 
