@@ -14,6 +14,8 @@ const App = () => {
    * 
    */
 
+  const SEARCH_API = "https://api.themoviedb.org/3/search/movie?api_key=f2360989338abcdd53ef13d0fa0b762a&language=en-US&page=1&include_adult=false";
+
   const[movies, setMovies] = useState([]);
   const[search, setSearch] = useState("");
   const[searchTerm, setSearchTerm] = useState('');
@@ -51,13 +53,18 @@ const App = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-
-
-
+    
+    fetch(SEARCH_API + searchTerm)
+      .then((response) => response.json())
+      .then((data) => {
+        setMovies(data.results);
+      })
 
   };
 
-  const handle on chang
+  const handleOnChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
 
 
   return(
